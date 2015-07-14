@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
+Contributors: waitlisted
 Donate link: http://waitlisted.co/
 Tags: signups, social
 Requires at least: 3.0.1
