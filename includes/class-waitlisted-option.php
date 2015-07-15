@@ -94,32 +94,7 @@ class Waitlisted_Option {
             'waitlisted_account_section'
             );
 
-        add_settings_field(
-            // ID used to identify the field throughout the theme
-            'waitlisted_color',
-            // The label to the left of the option interface element
-            'Waitlisted Modal Color',
-            // The name of the function responsible for rendering the option interface
-            array( $this, 'waitlisted_render_color_input_html' ),
-            // The page on which this option will be displayed
-            $this->plugin_name,
-            // The name of the section to which this field belongs
-            'waitlisted_account_section'
-            );
-
-        add_settings_field(
-            // ID used to identify the field throughout the theme
-            'waitlisted_social',
-            // The label to the left of the option interface element
-            'Waitlisted Social Share Text',
-            // The name of the function responsible for rendering the option interface
-            array( $this, 'waitlisted_render_social_input_html' ),
-            // The page on which this option will be displayed
-            $this->plugin_name,
-            // The name of the section to which this field belongs
-            'waitlisted_account_section'
-            );
-
+        
         // Finally, we register the fields with WordPress
         register_setting(
             // The settings group name. Must exist prior to the register_setting call.
@@ -130,23 +105,6 @@ class Waitlisted_Option {
             array( $this, 'waitlisted_validate_domain' )
             );
 
-        register_setting(
-            // The settings group name. Must exist prior to the register_setting call.
-            'waitlisted_account_section',
-            // The name of an option to sanitize and save.
-            'waitlisted_color',
-            // The callback function for sanitization and validation
-            array( $this, 'waitlisted_validate_color' )
-            );
-
-        register_setting(
-            // The settings group name. Must exist prior to the register_setting call.
-            'waitlisted_account_section',
-            // The name of an option to sanitize and save.
-            'waitlisted_social',
-            // The callback function for sanitization and validation
-            array( $this, 'waitlisted_validate_social' )
-            );
 
         
     } // end of register_settings
@@ -159,7 +117,7 @@ class Waitlisted_Option {
      * @since 1.0.0
      */
     public function waitlisted_account() {
-        echo '<p>Waitlisted handles future user sign ups so that you don\'t have to.</p>';
+        echo '<p><a href="https://www.waitlisted.co/" target="_blank">Waitlisted</a> handles future user sign ups so that you don\'t have to.</p><p>Sign up for an account at <a href="https://www.waitlisted.co/users/sign_up" target="_blank">waitlisted.co</a>';
     } // end
 
     public function waitlisted_render_domain_input_html() {
@@ -172,25 +130,7 @@ class Waitlisted_Option {
 
     }
 
-    public function waitlisted_render_color_input_html() {
-        // First, we read the option from db
-        $waitlisted_color = get_option( 'waitlisted_color', '' );
-
-        // Next, we need to make sure the element is defined in the options. If not, we'll set an empty string.
-        // Render the output
-        echo '<input type="color" id="waitlisted_input_color" name="waitlisted_color" value="' . $waitlisted_color . '" />';
-
-    }
-
-    public function waitlisted_render_social_input_html() {
-        // First, we read the option from db
-        $waitlisted_social = get_option( 'waitlisted_social', '' );
-
-        // Next, we need to make sure the element is defined in the options. If not, we'll set an empty string.
-        // Render the output
-        echo '<input type="text" id="waitlisted_input_social" name="waitlisted_social" size="40" value="' . $waitlisted_social . '" />';
-
-    }
+    
 
 
     
@@ -216,41 +156,6 @@ class Waitlisted_Option {
       else {
         $output = $waitlisted_domain;
         add_settings_error( 'waitlisted_account_section', 'invalid-domain', __( 'You have entered an invalid domain.', $this->plugin_name ) );
-      }
-
-      return $output;
-
-    }
-
-    public function waitlisted_validate_color ( $input ) {
-      // Get old value from DB
-      $waitlisted_color = get_option( 'waitlisted_color' );
-
-      // Don't trust users
-
-      if ( !empty( $input ) ) {
-          $output = $input;
-      }
-      else {
-        $output = $waitlisted_color;
-        add_settings_error( 'waitlisted_account_section', 'invalid-color', __( 'You have entered an invalid color.', $this->plugin_name ) );
-      }
-      return $output;
-
-    }
-
-    public function waitlisted_validate_social ( $input ) {
-      // Get old value from DB
-      $waitlisted_social = get_option( 'waitlisted_social' );
-
-      // Don't trust users
-
-      if ( !empty( $input ) ) {
-          $output = $input;
-      }
-      else {
-        $output = $waitlisted_social;
-        add_settings_error( 'waitlisted_account_section', 'invalid-social-text', __( 'You have entered invalid social sharing text.', $this->plugin_name ) );
       }
 
       return $output;
