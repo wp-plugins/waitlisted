@@ -80,7 +80,6 @@ class Waitlisted_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/waitlisted-admin.css', array(), $this->version, 'all' );
 
 	}
 
@@ -103,7 +102,6 @@ class Waitlisted_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/waitlisted-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
 
