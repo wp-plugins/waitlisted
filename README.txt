@@ -19,7 +19,7 @@ Are you a product creator looking to start gathering users before launch. Sign u
 
 The wordpress plugin makes it easy to build a dynamic, engaging landing page with a few clicks.
 
-Sign up at: https://www.waitlisted.co/users/sign_up
+Sign up at: https://www.waitlisted.co/
 
 == Installation ==
 
