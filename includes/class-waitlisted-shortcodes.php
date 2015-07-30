@@ -16,7 +16,7 @@ class Waitlisted_Shortcodes {
     elseif (!empty($title)) {
       $inner = "<button>$title</button>";
     }
-    return "<a class=\"waitlisted-cta\" href=\"#\">$inner</a>";
+    return "<a class=\"join-waitlist\" href=\"#\">$inner</a>";
   }
 
 }
